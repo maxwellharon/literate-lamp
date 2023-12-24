@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ Vite::asset('resources/images/library.png') }}" style="width: 50px; height: 25px;">
+                        <img src="{{ Vite::asset('resources/images/library.png') }}" style="width: 191px; height: 156px;">
                     </a>
                 </div>
 

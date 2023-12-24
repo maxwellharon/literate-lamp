@@ -2,41 +2,6 @@
   <div class="flex flex-col h-screen">
 
     <alert v-if="alert.show" :message="alert.message" :success="alert.success" :error="alert.error" class="absolute top-10 right-0 m-4"></alert>
-
-    <div class="grid grid-cols-2 gap-4">
-      <div class="p-4 bg-gray-200">
-        <h3 class="text-2xl font-bold">{{ client.name }}</h3>
-        <div class="mt-4">
-          <p><span class="font-semibold">Email:</span> {{ client.email }}</p>
-          <p><span class="font-semibold">Card ID:</span> {{ client.card_id }}</p>
-          <p><span class="font-semibold">Address:</span> {{ client.address }}</p>
-          <p><span class="font-semibold">Phone Number:</span> {{ client.phone_number }}</p>
-          <p>
-            <span class="font-semibold">Status: </span>
-            <span class="uppercase font-bold" :class="{ 'text-green-500': client.status, 'text-red-500': !client.status }">
-              {{ client.status ? 'active' : 'inactive' }}
-            </span>
-          </p>
-        </div>
-      </div>
-
-
-      <div class="p-4 bg-gray-200">
-        <h3 class="text-2xl font-bold">Books:</h3>
-        <div class="mt-4" v-if="Array.isArray(borrowedBooks) && borrowedBooks.length">
-          <ul>
-            <li v-for="book in borrowedBooks" :key="book.id" class="mb-2">
-              <div class="flex items-center">
-                <p class="mr-4">{{ book.title }}</p>
-                <button class="px-4 py-2 text-white bg-blue-500 font-bold rounded hover:bg-blue-600" :class="{ 'bg-red-500': isOverdue(book.due_date) }" @click="bookReturned(book.id, book.title)">Returned</button>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-
     <div class="grid grid-cols-2 gap-4">
       <div>
 
@@ -75,6 +40,41 @@
               </div>
               <div class="flex items-right">
                 <button class="px-4 py-2 text-white bg-blue-500 font-bold rounded hover:bg-blue-600" @click="bookBorrowed(book.id)">Borrow</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="p-4 bg-gray-200">
+        <h3 class="text-2xl font-bold">{{ client.name }}</h3>
+        <div class="mt-4">
+          <p><span class="font-semibold">Email:</span> {{ client.email }}</p>
+          <p><span class="font-semibold">Card ID:</span> {{ client.card_id }}</p>
+          <p><span class="font-semibold">Address:</span> {{ client.address }}</p>
+          <p><span class="font-semibold">Phone Number:</span> {{ client.phone_number }}</p>
+          <p>
+            <span class="font-semibold">Status: </span>
+            <span class="uppercase font-bold" :class="{ 'text-green-500': client.status, 'text-red-500': !client.status }">
+              {{ client.status ? 'active' : 'inactive' }}
+            </span>
+          </p>
+        </div>
+      </div>
+
+
+      <div class="p-4 bg-gray-200">
+        <h3 class="text-2xl font-bold">Books:</h3>
+        <div class="mt-4" v-if="Array.isArray(borrowedBooks) && borrowedBooks.length">
+          <ul>
+            <li v-for="book in borrowedBooks" :key="book.id" class="mb-2">
+              <div class="flex items-center">
+                <p class="mr-4">{{ book.title }}</p>
+                <button class="px-4 py-2 text-white bg-blue-500 font-bold rounded hover:bg-blue-600" :class="{ 'bg-red-500': isOverdue(book.due_date) }" @click="bookReturned(book.id, book.title)">Returned</button>
               </div>
             </li>
           </ul>

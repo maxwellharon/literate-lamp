@@ -1,8 +1,23 @@
 <template>
 	<div>
-
+		<h2>Client Management</h2>
 		<alert v-if="alert.show" :message="alert.message" :success="alert.success" :error="alert.error" class="absolute top-10 right-0 m-4"></alert>
+		 <!-- Search bar -->
+		 <div class="py-3 mb-4 rounded-lg shadow-md">
+	    <input type="text" v-model="keyword" placeholder="Search Clients" class="w-full px-6 py-6 rounded-lg border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-black">
+	  </div>
 
+	  <!-- List of clients -->
+	  <div class="flex-grow overflow-auto">
+	    <ul class="px-4 py-2">
+	      <li v-for="client in clients" @click="selected(client.id, client.name, client.email, client.card_id, client.address, client.phone_number, client.status)" class="flex justify-between items-center px-4 py-3 mb-4 rounded-lg shadow-md" :class="{ 'bg-red-200': client.status == 0 }">
+	        <div class="flex-1 mr-4">
+	          <h2 class="text-lg font-medium">{{ client.name }}</h2>
+	          <p class="text-gray-500">{{ client.card_id }}</p>
+	        </div>
+	      </li>
+	    </ul>
+	  </div>
 		<form>
       <div class="py-3 mb-4 rounded-lg shadow-md">
         <input v-model="client.name" class="appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" name="name" placeholder="Full Name">
@@ -52,22 +67,7 @@
 
     <hr class="p-8">
 
-    <!-- Search bar -->
-	  <div class="py-3 mb-4 rounded-lg shadow-md">
-	    <input type="text" v-model="keyword" placeholder="Search clients" class="w-full px-6 py-6 rounded-lg border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-black">
-	  </div>
-
-	  <!-- List of clients -->
-	  <div class="flex-grow overflow-auto">
-	    <ul class="px-4 py-2">
-	      <li v-for="client in clients" @click="selected(client.id, client.name, client.email, client.card_id, client.address, client.phone_number, client.status)" class="flex justify-between items-center px-4 py-3 mb-4 rounded-lg shadow-md" :class="{ 'bg-red-200': client.status == 0 }">
-	        <div class="flex-1 mr-4">
-	          <h2 class="text-lg font-medium">{{ client.name }}</h2>
-	          <p class="text-gray-500">{{ client.card_id }}</p>
-	        </div>
-	      </li>
-	    </ul>
-	  </div>
+   
 
 	</div>
 </template>

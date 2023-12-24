@@ -33,10 +33,6 @@
                 <div class="flex justify-center">
                     <img src="{{ Vite::asset('resources/images/library.png') }}">
                 </div>
-
-                <div class="mt-16 flex justify-center">
-                    <p class="text-9xl font-bold">Library</p>
-                </div>
             </div>
         </div>
     </body>
